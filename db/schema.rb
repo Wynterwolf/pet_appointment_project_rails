@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_162047) do
+ActiveRecord::Schema.define(version: 2020_11_05_164142) do
 
-  create_table "patients", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id", null: false
+  create_table "appointments", force: :cascade do |t|
+    t.integer "veterinarian_id", null: false
+    t.integer "pet_id", null: false
+    t.string "location"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_patients_on_user_id"
+    t.index ["pet_id"], name: "index_appointments_on_pet_id"
+    t.index ["veterinarian_id"], name: "index_appointments_on_veterinarian_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -49,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_162047) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "patients", "users"
+  add_foreign_key "appointments", "pets"
+  add_foreign_key "appointments", "veterinarians"
   add_foreign_key "pets", "users"
 end
