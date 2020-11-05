@@ -5,6 +5,7 @@ class Appointment < ApplicationRecord
   validates :start_time, :end_time, :location, presence: true
   validate :vet_overlap
   validate :pet_overlap
+  validate :ends_after_start
   
   #Don't forget about doublebooking the appointments
   def vet_overlap
@@ -30,6 +31,12 @@ class Appointment < ApplicationRecord
     end
     if overlap
       errors.add(:pet, 'has a conflicting appointment')
+    end
+  end
+#keeps appointments start time before end time
+  def ends_after_start
+    if start_time > end_time
+      errors.add(:start_time, 'must start before the appointment end')
     end
   end
 end
