@@ -12,8 +12,27 @@ p1 = user.pets.find_or_create_by(name: "Samantha")
 p2 = user.pets.find_or_create_by(name: "Dean")
 p3 = user.pets.find_or_create_by(name: "Adran")
 
-v1 = Veterinarian.find_or_create_by(name: "Dr. Franknstein")
-v2 = Veterinarian.find_or_create_by(name: "Dr. Knowsitall", specializations: "Canine")
+v1 = Veterinarian.find_or_create_by(name: "Dr. Franknstein", specializations: "Reptile", phone_number: "(123)404-4547")
+v2 = Veterinarian.find_or_create_by(name: "Dr. Knowsitall", specializations: "Canine", phone_number: "(123)254-4267")
 v3 = Veterinarian.find_or_create_by(name: "Dr. Stein", specializations: "Feline", phone_number: "(123)454-4567")
 
-a1 = 
+a1 = v1.appointments.find_or_create_by(
+    pet: p1,
+    location: "downtown",
+    start_time: 2.days.ago,
+    end_time: 2.days.ago + 1.hour
+)
+
+a2 = v2.appointments.find_or_create_by(
+    pet: p2,
+    location: "downtown",
+    start_time: 1.days.ago,
+    end_time: 1.days.ago + 5.hour
+)
+
+a3 = v3.appointments.find_or_create_by(
+    pet: p3,
+    location: "uptown",
+    start_time: 7.days.ago,
+    end_time: 7.days.ago + 6.hour
+)
