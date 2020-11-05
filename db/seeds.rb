@@ -36,3 +36,14 @@ a3 = v3.appointments.find_or_create_by(
     start_time: 7.days.ago,
     end_time: 7.days.ago + 6.hour
 )
+
+10.times do
+    veterinarian = [v1, v2, v3].sample
+    start = [1,2,3,4,5,6].sample.days.ago + [1,2,3,4,5,6,7].sample.hour
+    veterinarian.appointments.find_or_create_by(
+        pet: [p1, p2, p3].sample,
+        start_time: start,
+        end_time: start + 1.hour,
+        location: ["Uptown", "Downtown", "Oregon", "Arizona"].sample
+    )
+end
