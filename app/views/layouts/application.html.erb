@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>VetAppointmentAppRails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<body>
+    <nav>
+        <%= link_to "Sign In", new_user_session_path %>
+
+        <% if user_signed_in? %>
+       
+        <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: flex;') do  %>
+        <%= submit_tag "Sign Out" %>
+        
+        <%= link_to "Pets", pets_url %>
+        <% end %>
+
+        <% else %>
+        
+        <% end %>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= yield %>
-  </body>
+</body>
+
 </html>
