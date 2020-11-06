@@ -19,25 +19,39 @@ class PetsController < ApplicationController
     end
 
     def create
-        @pet = 
+        #call build on current user to get ID
+        #works because has_many
+        @pet = current_user.pets.build(pet_params)
+            if @pet.save 
+                redirect_to pet_path(@pet)
+            else
+                render :new
+            end
     end
     
     def edit
         # @ = .find()
+        if @pet.update(pet_params)
+            redirect_to pet_path(@pet)
+        else
+            render :edit
+        end
     end
     
-    def def update
-
+    def update
+        if @pet.update(pet_params)
+            redirect_to pet_path(@pet)
+        else
+            render :edit
+        end
     end
     
-    def def destroy
+    def destroy
 
     end
     
 end
-def def destroy
 
-end
 
 private_methods
 #So we don't have to use this over and over
