@@ -3,7 +3,7 @@ class PetsController < ApplicationController
     #helper from devise
     before_action :authenticate_user!
     #Looking only at files the user created
-    before_action :set_patient, only: [:show, :edit, :update, :destroy]
+    before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
     def index
         #collection of all current_user pets
@@ -30,12 +30,6 @@ class PetsController < ApplicationController
     end
     
     def edit
-        # @ = .find()
-        if @pet.update(pet_params)
-            redirect_to pet_path(@pet)
-        else
-            render :edit
-        end
     end
     
     def update
@@ -55,7 +49,7 @@ end
 
 private_methods
 #So we don't have to use this over and over
-def set_patient
+def set_pet
     @pet = current_user.pets.find(params[:id])
 end
 
