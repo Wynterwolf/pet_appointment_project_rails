@@ -1,7 +1,7 @@
 <h1> New Vet </h1>
 
 <%= show_errors_for(@veterinarian) %>
-<%= form_for( @veterinarian do |f| %>
+<%= form_for @veterinarian do |f| %>
 
 <p>
     <%= f.label :name %>
@@ -9,13 +9,13 @@
 </p>
 
 <p> 
-    <% f.label :phone_number %>
-    <% f.text_field :phone_number %>
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
 </p>
 
 <p> 
-    <% f.label :specialization %>
-    <% f.text_area :specialization %>
+    <%= f.label :specializations %>
+    <%= f.text_area :specializations %>
 </p>
 
 <%= f.submit %>

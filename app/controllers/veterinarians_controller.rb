@@ -1,6 +1,6 @@
 class VeterinariansController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_veterinarian, only: [:show, :edit, :update, :destroy]
+    before_action :set_vet, only: [:show, :edit, :update, :destroy]
 
     def index
         @veterinarians = Veterinarian.all

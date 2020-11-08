@@ -1,0 +1,8 @@
+<h1> Veterinarians List </h1>
+
+<button><%= link_to 'Add Veterinarian', new_veterinarian_path %></button>
+
+<% @veterinarians.each do |veterinarian| %>
+<p><%= link_to veterinarian.name, veterinarian_url(veterinarian) %></p>
+
+<% end %>
