@@ -30,6 +30,7 @@ class PetsController < ApplicationController
     end
     
     def edit
+        #form_for works the same from update/edit
     end
     
     def update
@@ -41,7 +42,8 @@ class PetsController < ApplicationController
     end
     
     def destroy
-
+        @pet.destroy
+        redirect_to pets_path
     end
     
 end
