@@ -11,26 +11,12 @@
 </head>
 
 <body>
-    <nav>
-        <%= link_to "Sign In", new_user_session_path %>
-
-        <% if user_signed_in? %>
-
-        <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: flex;') do  %>
-        <%= submit_tag "Sign Out" %>
-
-        <%= link_to "Pets", pets_url %>
-        <% end %>
-
-        <% else %>
-
-        <% end %>
-    </nav>
+    <%= render partial: 'shared/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
-    <% end%>
+    <% end %>
 
     <%= yield %>
 </body>
