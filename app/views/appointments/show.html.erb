@@ -1,0 +1,14 @@
+<h1>Appointment Details</h1>
+
+<p>Pet: <%= link_to @appointment.pet_name, pet_path(@appointment.pet) %> </p>
+<p>Veterinarian: <%= link_to @appointment.veterinarian.name, veterinarian_path(@appointment.veterinarian) %> </p>
+<p>Location: <%= @appointment.location %> </p>
+<p>Start Time: <%= @appointment.start_time.strftime('%b %e, %l:%M %p') %> </p>
+<p>End Time: <%= @appointment.end_time.strftime('%b %e, %l:%M %p')  %> </p>
+
+<%# link to edit appointment %>
+<%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %>
+<%# delete appointments  %>
+<%= form_tag(appointment_path(@appointment), method: :delete, style: 'display: inline-block;') do %>
+<%= submit_tag "Delete Appointment" %>
+<% end %>
