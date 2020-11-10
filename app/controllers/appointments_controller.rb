@@ -3,7 +3,16 @@ class AppointmentsController < ApplicationController
     before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
     def index
-        @appointments = current_user.appointments
+        @pet = current_user.pets.find_by_id(params[:pet_id])
+        @veterinarian = Veterinarian.find_by_id(params[:pet_id])
+        #conditional logic for nested route
+        if @pet
+            @appointments = @pet.appointments
+        elsif @veterinarian 
+            @appointments = current_user.appointments.by_vet(@veterinarian)
+        else
+            @appointments = current_user.appointments
+        end
     end
 
     def show
@@ -11,7 +20,15 @@ class AppointmentsController < ApplicationController
     end
 
     def new
-        @appointment = Appointment.new
+        @veterinarian = Veterinarian.find_by_id(params[:pet_id])
+        @pet = current_user.pets.find_by_id(params[:veterinarian_id])
+        if @pet
+            @appointment = @pet.appointments.build
+        elsif @veterinarian 
+            @appointment = @veterinarian.appointments.build
+        else
+            @appointment = Appointment.new
+        end
     end
 
     def create 
@@ -51,5 +68,10 @@ class AppointmentsController < ApplicationController
 
     def appointment_params
         params.require(:appointment).permit(:start_time, :end_time, :location, :veterinarian_id, :pet_id)
+    end
+
+    #scope method returns all appointments for input vet
+    def self.by_vet(veterinarian)
+        where(veterinarian_id: veterinarian.id)
     end
 end
