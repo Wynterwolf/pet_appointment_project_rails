@@ -2,9 +2,11 @@
 
 <p>
 <%= link_to "Edit", edit_pet_path(@pet) %>
+
 <%= form_tag(pet_path(@pet), method: :delete) do %>
 <%= submit_tag "Delete Pet" %>
 
+<%= link_to "#{@pet.name}'s appointments", pet_appointments_path(@pet) %>
 <% end %>
 
 </p>

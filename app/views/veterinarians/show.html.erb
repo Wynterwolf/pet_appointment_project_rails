@@ -1,1 +1,4 @@
 <h1><%= @veterinarian.name %></h1>
+
+<p> <%= link_to "Book with #{@veterinarian.name}", new_pet_appointment_path(@veterinarian) %></p>
+<p> <%= link_to "#{@veterinarian.name}'s appointment", pet_appointments_path(@veterinarian) %></p>
