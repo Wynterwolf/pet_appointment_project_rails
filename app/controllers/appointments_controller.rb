@@ -13,6 +13,7 @@ class AppointmentsController < ApplicationController
         else
             @appointments = current_user.appointments
         end
+        filter_options
     end
 
     def show
@@ -65,12 +66,21 @@ class AppointmentsController < ApplicationController
         )
     end
 
+    def filter_options
+        if params[:filter_by_time] == "upcoming"
+            @appointments = @appointments.upcoming
+        elsif params[:filter_by_time] == "past"
+            @appointments = @appointments.past
+        end
+        if params[:sort] == "most recent"
+            @appointments = @appointments.most_recent
+        elsif params[:sort] == "longest ago"
+            @appointments = @appointments.longest_ago
+        end
+    end
+
     def appointment_params
         params.require(:appointment).permit(:start_time, :end_time, :location, :veterinarian_id, :pet_id)
     end
 
-    #scope method returns all appointments for input vet
-    def self.by_vet(veterinarian)
-        where(veterinarian_id: veterinarian.id)
-    end
 end
