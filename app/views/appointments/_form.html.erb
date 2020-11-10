@@ -4,25 +4,24 @@
 
 <p>
     <% if appointment.pet_id %>
-    <%= f.label :pet_id, "Pet" %>
-    <% f.hidden_field :pet_id %>
-    <% appointment.pet.name %>
+        <%= f.label :pet_id, "Pet" %>
+        <%= f.hidden_field :pet_id %>
+        <%= appointment.pet.name %>
     <% else %>
-    <%= f.collection_select :pet_id, current_user.pets, :id, :name %>
+        <%= f.label :pet_id, "Pet" %>
+        <%= f.collection_select :pet_id, current_user.pets, :id, :name %>
     <% end %>
-    
 </p>
 
 <p>
     <% if appointment.veterinarian_id %>
-    <%= f.label :veterinarian_id, "Veterinarian" %>
-    <%= f.hidden_field :veterinarian_id %>
-    <%= appointment.veterinarian.name %>
+        <%= f.label :veterinarian_id, "Veterinarian" %>
+        <%= f.hidden_field :veterinarian_id %>
+        <%= appointment.veterinarian.name %>
     <% else %>
-    <% f.label :veterinarian_id, "Veterinarian" %>
-    <%= f.collection_select :veterinarian_id, Veterinarian.all, :id, :name %>
+        <%= f.label :veterinarian_id, "Veterinarian" %>
+        <%= f.collection_select :veterinarian_id, Veterinarian.all, :id, :name %>
     <% end %>
-    
 </p>
 
 <p>
