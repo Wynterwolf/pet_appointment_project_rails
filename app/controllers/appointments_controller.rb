@@ -16,12 +16,12 @@ class AppointmentsController < ApplicationController
     end
 
     def show
-        # @ = .find()
     end
 
     def new
-        @veterinarian = Veterinarian.find_by_id(params[:pet_id])
-        @pet = current_user.pets.find_by_id(params[:veterinarian_id])
+        @pet = current_user.pets.find_by_id(params[:pet_id])
+        @veterinarian = Veterinarian.find_by_id(params[:veterinarian_id])
+        
         if @pet
             @appointment = @pet.appointments.build
         elsif @veterinarian 
@@ -42,7 +42,6 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-        # @ = .find()
     end
 
     def update 
