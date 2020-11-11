@@ -12,7 +12,13 @@ Open the project in your favorite code editor. Open a term window and use the fo
 
 ```bundle install```
 
-Once this command is finished (which may take a while, depending on the system), you can return to your terminal. At this point you have a couple of options. You can populate the database from the seed file by using the following command:
+Once this command is finished (which may take a while, depending on the system), you can return to your terminal. 
+
+Next we will run our migrations, using the following command:
+
+```rails db:migrate```
+
+At this point you have a couple of options. You can populate the database from the seed file by using the following command:
 
 ```rails db:seed```
 
@@ -27,3 +33,5 @@ Or you can skip seeding the DB from my file and create your own data from the us
 Open up your favorite browser and use the following URL to see the user interface.
 
 ```localhost:3000```
+
+If you seeded the DB as instructed above, you can log into the account with the email of ```test@test.com``` and the password of ```password```
