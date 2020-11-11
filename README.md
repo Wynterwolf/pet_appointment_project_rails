@@ -1,24 +1,29 @@
-# README
+# Vet Appointment App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pet appointments, especially when dealing with multiple pets, can be hard to keep track of. This app allows you to keep track of your pets veterinarian, his or her specialty, and appointment times for individual pets while maintaining a secure login for you, our User. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+To fork and clone this repo from your terminal window:
 
-* System dependencies
+```git clone https://github.com/Wynterwolf/pet_appointment_project_rails```
 
-* Configuration
+Open the project in your favorite code editor. Open a term window and use the following commands to install all the gems related to this project.
 
-* Database creation
+```bundle install```
 
-* Database initialization
+Once this command is finished (which may take a while, depending on the system), you can return to your terminal. At this point you have a couple of options. You can populate the database from the seed file by using the following command:
 
-* How to run the test suite
+```rails db:seed```
 
-* Services (job queues, cache servers, search engines, etc.)
+If while seeding the database, you get a message about needing yarn, please see the following website for installation instructions.
 
-* Deployment instructions
+```https://classic.yarnpkg.com/en/docs/install/#windows-stable```
 
-* ...
+Or you can skip seeding the DB from my file and create your own data from the user interface. From here, you will need to start the server. It can be done with this command:
+
+```rails server```
+
+Open up your favorite browser and use the following URL to see the user interface.
+
+```localhost:3000```
