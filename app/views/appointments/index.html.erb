@@ -1,6 +1,7 @@
 <h1>Appointments</h1>
 
 <button><%= link_to "Add Appointment", new_appointment_path %></button>
+
 <%= form_tag(appointments_path, method: 'get') do %>
 
 <label for="filter_by_time">Filter By Time</label>

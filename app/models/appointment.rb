@@ -6,7 +6,7 @@ class Appointment < ApplicationRecord
   validate :vet_overlap, :pet_overlap, if: :starts_before_it_ends?
   validate :ends_after_it_starts
   
-  #Don't forget about doublebooking the appointments
+#Don't forget about doublebooking the appointments
   def vet_overlap
     this_start = self.start_time
     this_end = self.end_time
@@ -44,7 +44,7 @@ class Appointment < ApplicationRecord
     start_time < end_time
   end
 
-  #define doctor to use on appointment index view
+#define doctor to use on appointment index view
   def vet_name
     self.veterinarian.name
   end
@@ -53,26 +53,25 @@ class Appointment < ApplicationRecord
     self.pet.name
   end
 
-  #scope method returns all appointments for input vet
+#scope method returns all appointments for input vet
   def self.by_vet(veterinarian)
     where(veterinarian_id: veterinarian.id)
   end
-
+#this is a scope
   def self.upcoming
     where("start_time > ?", Time.now)
   end
-
+#this is a scope
   def self.past 
     where("start_time < ?", Time.now)
   end
-
+#this is a scope
   def self.most_recent
     order(start_time: :desc)
   end
-
+#this is a scope
   def self.longest_ago
     order(start_time: :asc)
   end
-
 
 end
