@@ -35,3 +35,7 @@ Open up your favorite browser and use the following URL to see the user interfac
 ```localhost:3000```
 
 If you seeded the DB as instructed above, you can log into the account with the email of ```test@test.com``` and the password of ```password```
+
+NOTE: If you plan on using the 'log in with Google' link, you will need to take a few extra steps. Your Google client ID and Client secret need to be loaded into the root directory in an .env file. 
+
+If you want to obtain the credentials, you can go to: https://console.developers.google.com/
