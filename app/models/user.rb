@@ -13,13 +13,25 @@ class User < ApplicationRecord
 
   #validates oauth
     def self.from_google(uid:, email:, full_name:, avatar_url:)
-    user = User.find_or_create_by(email: email) do |u|
-      u.uid = uid
-      u.full_name = full_name
-      u.avatar_url = avatar_url
-      u.password = SecureRandom.hex
+    # user = User.find_or_create_by(email: email) do |u|
+    #   u.uid = uid
+    #   u.full_name = full_name
+    #   u.avatar_url = avatar_url
+    #   u.password = SecureRandom.hex
+    # end
+    # user.update(uid: uid, full_name: full_name, avatar_url: avatar_url)
+    # byebug
+   if user = User.find_by(email: email)
+      user.update(uid: uid, full_name: full_name, avatar_url: avatar_url) unless user.uid.present?
+      user
+    else
+      User.create(
+        email: email,
+        uid: uid,
+        full_name: full_name,
+        avatar_url: avatar_url,
+        password: SecureRandom.hex
+      )
     end
-    user.update(uid: uid, full_name: full_name, avatar_url: avatar_url)
-    byebug
   end
 end
